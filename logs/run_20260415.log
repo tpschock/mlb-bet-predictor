@@ -5,3 +5,6 @@
 2026-04-15 13:43:58,665 [INFO] Fetching odds…
 2026-04-15 13:43:58,882 [INFO] Odds API: 15 games fetched. Requests remaining: 498
 2026-04-15 13:43:58,884 [INFO] Predictions saved → predictions/predictions_20260415.json
+2026-04-15 14:36:08,637 [INFO] Fetching odds…
+2026-04-15 14:36:08,769 [INFO] Odds API: 15 games fetched. Requests remaining: 496
+2026-04-15 14:36:08,771 [INFO] Predictions saved → predictions/predictions_20260415.json
