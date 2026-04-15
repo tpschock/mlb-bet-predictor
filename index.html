@@ -126,14 +126,14 @@
 </div>
 
 <script>
-const BANKROLL = 1000;
+const BANKROLL = 100;
 
 function fmtOdds(n) {
   return n > 0 ? "+" + n : String(n);
 }
 
 function todayStr() {
-  const d = new Date();
+  const d = new Date(new Date().toLocaleString("en-US", {timeZone: "America/Chicago"}));
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, "0");
   const dy = String(d.getDate()).padStart(2, "0");
@@ -143,8 +143,8 @@ function todayStr() {
 function fmtDate(str) {
   if (!str) return "";
   const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-  const days   = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  const d = new Date(str);
+  const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const d = new Date(new Date().toLocaleString("en-US", {timeZone: "America/Chicago"}));
   return `${days[d.getDay()]} ${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
 }
 
@@ -174,7 +174,7 @@ function valueCard(g) {
       <div class="pick-meta">
         <span class="pick-odds">${fmtOdds(p.odds)}</span>
         <span class="pick-edge">${p.edge}% edge</span>
-        <span class="pick-kelly">Kelly: $${p.wager}</span>
+        <span class="pick-kelly">Suggested Wager: $${(p.wager/10).toFixed(2)}</span>
       </div>
     </div>`).join("");
 
@@ -233,7 +233,7 @@ function render(data) {
         return eb > ea ? b : a;
       })
     : null;
-  const totalWager = valueBets.flatMap(g => g.value_picks).reduce((s, p) => s + p.wager, 0);
+  const totalWager = valueBets.flatMap(g => g.value_picks).reduce((s, p) => s + p.wager, 0)/10;
 
   const badge = valueBets.length
     ? `<span class="badge badge-value"><span class="dot"></span>${valueBets.length} value bet${valueBets.length > 1 ? "s" : ""}</span>`
@@ -268,7 +268,7 @@ function render(data) {
       </div>
       <div class="stat">
         <div class="stat-label">Suggested wager</div>
-        <div class="stat-val">$${totalWager.toFixed(0)}</div>
+        <div class="stat-val">$${totalWager.toFixed(2)}</div>
         <div class="stat-sub">on $${BANKROLL.toLocaleString()} bankroll</div>
       </div>
     </div>
