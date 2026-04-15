@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MLB Bet Picks</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f8f8f6;
+      --surface: #ffffff;
+      --border:  rgba(0,0,0,0.10);
+      --text:    #1a1a1a;
+      --muted:   #6b6b6b;
+      --green:   #1D9E75;
+      --green-bg:#EAF3DE;
+      --green-dk:#27500A;
+      --green-lt:#C0DD97;
+      --red:     #D85A30;
+      --blue:    #378ADD;
+      --radius:  12px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:      #1a1a1a;
+        --surface: #242424;
+        --border:  rgba(255,255,255,0.10);
+        --text:    #f0f0f0;
+        --muted:   #999;
+        --green-bg:#0d2e1a;
+        --green-lt:#1D9E75;
+        --green-dk:#9FE1CB;
+      }
+    }
+
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 15px; line-height: 1.5; }
+
+    .container { max-width: 760px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+
+    /* Header */
+    .site-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap; gap: 10px; }
+    .site-header h1 { font-size: 22px; font-weight: 500; }
+    .site-header p  { font-size: 13px; color: var(--muted); margin-top: 2px; }
+    .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 6px; }
+    .badge-value { background: var(--green-bg); color: var(--green); }
+    .badge-none  { background: rgba(0,0,0,0.06); color: var(--muted); }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; }
+
+    /* Stats row */
+    .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 2rem; }
+    .stat { background: var(--surface); border: 0.5px solid var(--border); border-radius: 10px; padding: .85rem 1rem; }
+    .stat-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: .04em; }
+    .stat-val   { font-size: 22px; font-weight: 500; }
+    .stat-sub   { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .stat-green { color: var(--green); }
+    @media (max-width: 480px) { .stats { grid-template-columns: 1fr 1fr; } }
+
+    /* Section labels */
+    .section-label { font-size: 11px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .65rem; }
+
+    /* Game cards */
+    .games { display: flex; flex-direction: column; gap: 10px; margin-bottom: 2rem; }
+
+    .card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; }
+    .card.value { border: 1.5px solid var(--green); }
+    .card.no-edge { opacity: .7; }
+
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .75rem; flex-wrap: wrap; gap: 6px; }
+    .matchup { font-size: 15px; font-weight: 500; }
+    .gametime { font-size: 12px; color: var(--muted); }
+
+    /* Prob bar */
+    .prob-track { height: 6px; border-radius: 3px; overflow: hidden; display: flex; margin-bottom: 3px; }
+    .prob-away { background: var(--blue); }
+    .prob-home { background: var(--red); }
+    .prob-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-bottom: .75rem; }
+
+    /* Metrics row */
+    .metrics { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; margin-bottom: .85rem; }
+    .metric { background: var(--bg); border-radius: 8px; padding: .5rem; text-align: center; }
+    .metric-label { font-size: 11px; color: var(--muted); margin-bottom: 3px; }
+    .metric-val { font-size: 14px; font-weight: 500; }
+    .metric-val.pos { color: var(--green); }
+    .metric-val.neg { color: var(--red); }
+
+    /* Pick pill */
+    .pick-row { display: flex; align-items: center; justify-content: space-between; background: var(--green-bg); border-radius: 8px; padding: .6rem 1rem; flex-wrap: wrap; gap: 6px; }
+    .pick-team   { font-size: 14px; font-weight: 500; color: var(--green-dk); }
+    .pick-meta   { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .pick-odds   { font-size: 13px; font-weight: 500; color: var(--green-dk); }
+    .pick-edge   { font-size: 12px; background: var(--green-lt); color: var(--green-dk); padding: 2px 8px; border-radius: 5px; }
+    .pick-kelly  { font-size: 12px; color: var(--green); }
+
+    /* No-value message */
+    .no-value { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem; text-align: center; color: var(--muted); font-size: 14px; }
+
+    /* Loader / error */
+    .loader { text-align: center; color: var(--muted); padding: 3rem 0; font-size: 14px; }
+
+    /* Disclaimer */
+    footer { font-size: 11px; color: var(--muted); text-align: center; border-top: 0.5px solid var(--border); padding-top: 1.5rem; margin-top: 1rem; }
+    footer a { color: var(--muted); }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div id="app">
+    <div class="loader">Loading today's picks…</div>
+  </div>
+
+  <footer>
+    For research and entertainment only &nbsp;·&nbsp; Gamble responsibly &nbsp;·&nbsp;
+    Odds via <a href="https://the-odds-api.com" target="_blank">The Odds API</a> &nbsp;·&nbsp;
+    <a href="https://github.com/YOUR_USERNAME/mlb-bet-predictor" target="_blank">View source</a>
+  </footer>
+</div>
+
+<script>
+const BANKROLL = 1000;
+
+function fmtOdds(n) {
+  return n > 0 ? "+" + n : String(n);
+}
+
+function todayStr() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const dy = String(d.getDate()).padStart(2, "0");
+  return `${y}${m}${dy}`;
+}
+
+function fmtDate(str) {
+  if (!str) return "";
+  const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const days   = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const d = new Date(str);
+  return `${days[d.getDay()]} ${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+}
+
+function probBar(awayPct, homePct, awayLabel, homeLabel) {
+  return `
+    <div class="prob-track">
+      <div class="prob-away" style="width:${awayPct}%"></div>
+      <div class="prob-home" style="width:${homePct}%"></div>
+    </div>
+    <div class="prob-labels"><span>${awayLabel}</span><span>${homeLabel}</span></div>`;
+}
+
+function valueCard(g) {
+  const picks = g.value_picks.map(p => `
+    <div class="pick-row">
+      <span class="pick-team">${p.bet}</span>
+      <div class="pick-meta">
+        <span class="pick-odds">${fmtOdds(p.odds)}</span>
+        <span class="pick-edge">${p.edge}% edge</span>
+        <span class="pick-kelly">Kelly: $${p.wager}</span>
+      </div>
+    </div>`).join("");
+
+  const awayPct = g.away_blend_p;
+  const homePct = g.home_blend_p;
+  const [away, home] = g.game.split(" @ ");
+
+  return `
+  <div class="card value">
+    <div class="card-header">
+      <span class="matchup">${g.game}</span>
+      <span class="gametime">${new Date(g.commence).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}</span>
+    </div>
+    ${probBar(awayPct, homePct, `${away} ${awayPct}%`, `${home} ${homePct}%`)}
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">DK fair (away)</div><div class="metric-val">${g.away_fair_p}%</div></div>
+      <div class="metric"><div class="metric-label">Model blend</div><div class="metric-val pos">${g.away_blend_p}%</div></div>
+      <div class="metric"><div class="metric-label">Edge</div><div class="metric-val pos">+${Math.max(g.away_edge, g.home_edge).toFixed(1)}%</div></div>
+    </div>
+    ${picks}
+  </div>`;
+}
+
+function noEdgeCard(g) {
+  const edge = Math.max(g.away_edge, g.home_edge);
+  return `
+  <div class="card no-edge">
+    <div class="card-header">
+      <span class="matchup">${g.game}</span>
+      <span class="gametime">${new Date(g.commence).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}</span>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">Away fair</div><div class="metric-val">${g.away_fair_p}%</div></div>
+      <div class="metric"><div class="metric-label">Model blend</div><div class="metric-val">${g.away_blend_p}%</div></div>
+      <div class="metric"><div class="metric-label">Edge</div><div class="metric-val neg">+${edge.toFixed(1)}%</div></div>
+    </div>
+  </div>`;
+}
+
+function render(data) {
+  const results  = data.results || [];
+  const valueBets = results.filter(g => g.value_picks && g.value_picks.length > 0);
+  const noEdge    = results.filter(g => !g.value_picks || g.value_picks.length === 0);
+  const bestEdge  = valueBets.length
+    ? Math.max(...valueBets.flatMap(g => g.value_picks.map(p => p.edge)))
+    : 0;
+  const bestGame  = valueBets.length
+    ? valueBets.reduce((a, b) => {
+        const ea = Math.max(...a.value_picks.map(p => p.edge));
+        const eb = Math.max(...b.value_picks.map(p => p.edge));
+        return eb > ea ? b : a;
+      })
+    : null;
+  const totalWager = valueBets.flatMap(g => g.value_picks).reduce((s, p) => s + p.wager, 0);
+
+  const badge = valueBets.length
+    ? `<span class="badge badge-value"><span class="dot"></span>${valueBets.length} value bet${valueBets.length > 1 ? "s" : ""}</span>`
+    : `<span class="badge badge-none">no value bets today</span>`;
+
+  const bestSub = bestGame
+    ? bestGame.value_picks.find(p => p.edge === bestEdge)?.bet || ""
+    : "—";
+
+  document.getElementById("app").innerHTML = `
+    <div class="site-header">
+      <div>
+        <h1>MLB bet picks</h1>
+        <p>${fmtDate(data.date ? data.date.replace(/(\d{4})(\d{2})(\d{2})/, "$1-$2-$3") : new Date().toISOString())} · DraftKings</p>
+      </div>
+      ${badge}
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Games today</div>
+        <div class="stat-val">${results.length}</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Value bets</div>
+        <div class="stat-val stat-green">${valueBets.length}</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Best edge</div>
+        <div class="stat-val">${bestEdge.toFixed(1)}%</div>
+        <div class="stat-sub">${bestSub}</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Suggested wager</div>
+        <div class="stat-val">$${totalWager.toFixed(0)}</div>
+        <div class="stat-sub">on $${BANKROLL.toLocaleString()} bankroll</div>
+      </div>
+    </div>
+
+    ${valueBets.length ? `
+      <div class="section-label">Value bets</div>
+      <div class="games">${valueBets.map(valueCard).join("")}</div>
+    ` : `<div class="no-value">No value bets found for today. Check back tomorrow.</div>`}
+
+    ${noEdge.length ? `
+      <div class="section-label" style="margin-top:1rem">No edge — skip</div>
+      <div class="games">${noEdge.map(noEdgeCard).join("")}</div>
+    ` : ""}
+  `;
+}
+
+async function load() {
+  const today = todayStr();
+  const url   = `predictions/predictions_${today}.json`;
+  try {
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error(`${resp.status}`);
+    const data = await resp.json();
+    render(data);
+  } catch (err) {
+    document.getElementById("app").innerHTML = `
+      <div class="loader">
+        No predictions file found for today yet.<br>
+        <small style="margin-top:8px;display:block">Run the GitHub Action or check back after noon ET.</small>
+      </div>`;
+  }
+}
+
+load();
+</script>
+</body>
+</html>
