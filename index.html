@@ -92,7 +92,15 @@
     .pick-edge   { font-size: 12px; background: var(--green-lt); color: var(--green-dk); padding: 2px 8px; border-radius: 5px; }
     .pick-kelly  { font-size: 12px; color: var(--green); }
 
-    /* No-value message */
+    /* Pitcher rows */
+    .pitchers { background: var(--bg); border-radius: 8px; padding: .5rem .75rem; margin-bottom: .75rem; display: flex; flex-direction: column; gap: 4px; }
+    .pitcher-row { display: flex; align-items: center; gap: 8px; font-size: 12px; flex-wrap: wrap; }
+    .pitcher-name { font-weight: 500; color: var(--text); min-width: 140px; }
+    .pitcher-stat { color: var(--muted); }
+    .pitcher-stat.pos { color: var(--green); font-weight: 500; }
+    .pitcher-stat.neg { color: var(--red);  font-weight: 500; }
+
+        /* No-value message */
     .no-value { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem; text-align: center; color: var(--muted); font-size: 14px; }
 
     /* Loader / error */
@@ -113,7 +121,7 @@
   <footer>
     For research and entertainment only &nbsp;·&nbsp; Gamble responsibly &nbsp;·&nbsp;
     Odds via <a href="https://the-odds-api.com" target="_blank">The Odds API</a> &nbsp;·&nbsp;
-    <a href="https://github.com/tpschock/mlb-bet-predictor" target="_blank">View source</a>
+    <a href="https://github.com/YOUR_USERNAME/mlb-bet-predictor" target="_blank">View source</a>
   </footer>
 </div>
 
@@ -125,7 +133,7 @@ function fmtOdds(n) {
 }
 
 function todayStr() {
-  const d = new Date(new Date().toLocaleString("en-US", {timeZone: "America/Chicago"}));
+  const d = new Date();
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, "0");
   const dy = String(d.getDate()).padStart(2, "0");
@@ -135,8 +143,8 @@ function todayStr() {
 function fmtDate(str) {
   if (!str) return "";
   const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-  const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  const d = new Date(new Date().toLocaleString("en-US", {timeZone: "America/Chicago"}));
+  const days   = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const d = new Date(str);
   return `${days[d.getDay()]} ${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
 }
 
@@ -147,6 +155,16 @@ function probBar(awayPct, homePct, awayLabel, homeLabel) {
       <div class="prob-home" style="width:${homePct}%"></div>
     </div>
     <div class="prob-labels"><span>${awayLabel}</span><span>${homeLabel}</span></div>`;
+}
+
+function pitcherRow(name, era, whip, k9) {
+  const eraClass = era <= 3.50 ? "pos" : era >= 4.80 ? "neg" : "";
+  return `<div class="pitcher-row">
+    <span class="pitcher-name">${name || "TBD"}</span>
+    <span class="pitcher-stat ${eraClass}">${era} ERA</span>
+    <span class="pitcher-stat">${whip} WHIP</span>
+    <span class="pitcher-stat">${k9} K/9</span>
+  </div>`;
 }
 
 function valueCard(g) {
@@ -170,11 +188,15 @@ function valueCard(g) {
       <span class="matchup">${g.game}</span>
       <span class="gametime">${new Date(g.commence).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}</span>
     </div>
+    <div class="pitchers">
+      ${pitcherRow(g.away_starter, g.away_starter_era, g.away_starter_whip, g.away_starter_k9)}
+      ${pitcherRow(g.home_starter, g.home_starter_era, g.home_starter_whip, g.home_starter_k9)}
+    </div>
     ${probBar(awayPct, homePct, `${away} ${awayPct}%`, `${home} ${homePct}%`)}
     <div class="metrics">
-      <div class="metric"><div class="metric-label">DK fair (away)</div><div class="metric-val">${g.away_fair_p}%</div></div>
-      <div class="metric"><div class="metric-label">Model blend</div><div class="metric-val pos">${g.away_blend_p}%</div></div>
-      <div class="metric"><div class="metric-label">Edge</div><div class="metric-val pos">+${Math.max(g.away_edge, g.home_edge).toFixed(1)}%</div></div>
+      <div class="metric"><div class="metric-label">Market fair</div><div class="metric-val">${g.away_fair_p}% / ${g.home_fair_p}%</div></div>
+      <div class="metric"><div class="metric-label">Pitcher edge</div><div class="metric-val">${g.away_pitcher_p || "—"}% / ${g.home_pitcher_p || "—"}%</div></div>
+      <div class="metric"><div class="metric-label">Final blend</div><div class="metric-val pos">${g.away_blend_p}% / ${g.home_blend_p}%</div></div>
     </div>
     ${picks}
   </div>`;
@@ -188,6 +210,7 @@ function noEdgeCard(g) {
       <span class="matchup">${g.game}</span>
       <span class="gametime">${new Date(g.commence).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"})}</span>
     </div>
+    ${g.away_starter ? `<div style="font-size:12px;color:var(--muted);margin-bottom:.6rem">${g.away_starter} vs ${g.home_starter}</div>` : ""}
     <div class="metrics">
       <div class="metric"><div class="metric-label">Away fair</div><div class="metric-val">${g.away_fair_p}%</div></div>
       <div class="metric"><div class="metric-label">Model blend</div><div class="metric-val">${g.away_blend_p}%</div></div>
