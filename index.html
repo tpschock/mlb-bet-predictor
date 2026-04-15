@@ -125,7 +125,7 @@ function fmtOdds(n) {
 }
 
 function todayStr() {
-  const d = new Date();
+  const d = new Date(new Date().toLocaleString("en-US", {timeZone: "America/Chicago"}));
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, "0");
   const dy = String(d.getDate()).padStart(2, "0");
@@ -135,8 +135,8 @@ function todayStr() {
 function fmtDate(str) {
   if (!str) return "";
   const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-  const days   = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  const d = new Date(str);
+  const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const d = new Date(new Date().toLocaleString("en-US", {timeZone: "America/Chicago"}));
   return `${days[d.getDay()]} ${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
 }
 
