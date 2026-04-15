@@ -2,12 +2,13 @@ name: MLB Daily Bet Predictions
 
 on:
   schedule:
-    # Runs every day at 12:00 PM ET (16:00 UTC) — after DK posts morning lines
     - cron: "0 16 * * *"
-  workflow_dispatch:   # also allow manual trigger
+  workflow_dispatch:
 
 permissions:
-  contents: write      # needed to commit prediction files back to repo
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   predict:
@@ -38,3 +39,11 @@ jobs:
         with:
           commit_message: "🤖 Daily MLB predictions [skip ci]"
           file_pattern: "predictions/*.json data/power_ratings.json logs/*.log"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          publish_branch: gh-pages
+          exclude_assets: ".github,*.py,*.txt,logs,data,__pycache__"
