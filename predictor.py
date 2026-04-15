@@ -40,7 +40,7 @@ BOOKMAKER    = "draftkings"
 
 MIN_EDGE     = 3.0   # minimum edge % to flag as a value bet
 KELLY_FRAC   = 0.25  # fractional Kelly (conservative)
-BANKROLL     = 1000  # hypothetical bankroll for sizing
+BANKROLL     = 100  # hypothetical bankroll for sizing
 
 
 # ── Odds helpers ──────────────────────────────────────────────────────────────
