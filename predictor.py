@@ -45,9 +45,15 @@ BANKROLL     = 100
 MLB_API      = "https://statsapi.mlb.com/api/v1"
 
 # Blending weights — must sum to 1.0
-W_MARKET     = 0.50  # market fair probability
-W_POWER      = 0.25  # team power rating
-W_PITCHER    = 0.25  # starting pitcher advantage
+W_MARKET     = 0.45  # market fair probability (vig-stripped)
+W_POWER      = 0.20  # team power rating (run differential)
+W_PITCHER    = 0.20  # starting pitcher matchup (ERA/WHIP/K9)
+W_MOVEMENT   = 0.15  # line movement signal (sharp money indicator)
+
+# Line movement thresholds (American odds points)
+SHARP_MOVE_THRESHOLD  = 8   # move >= 8 pts = meaningful sharp action
+STRONG_MOVE_THRESHOLD = 15  # move >= 15 pts = strong sharp signal
+KILL_BET_MOVE         = 10  # if movement is AGAINST our pick by this much, kill the bet
 
 
 # ── Odds helpers ──────────────────────────────────────────────────────────────
@@ -215,6 +221,142 @@ def build_power_ratings() -> dict:
     return {}
 
 
+# ── Line movement ────────────────────────────────────────────────────────────
+
+def load_opening_lines() -> dict:
+    """
+    Load today's opening lines snapshot saved by snapshot_lines.py at 7 AM.
+    Returns dict keyed by game id, or empty dict if snapshot doesn't exist yet.
+    """
+    today    = datetime.now().strftime("%Y%m%d")
+    snap_file = Path("data") / f"opening_lines_{today}.json"
+    if snap_file.exists():
+        with open(snap_file) as f:
+            lines = json.load(f)
+        log.info(f"Opening lines loaded: {len(lines)} games from {snap_file.name}")
+        return lines
+    log.info("No opening lines snapshot found — line movement signal disabled for today.")
+    return {}
+
+
+def line_movement_signal(
+    game_id:    str,
+    home:       str,
+    away:       str,
+    home_odds:  int,
+    away_odds:  int,
+    opening:    dict,
+) -> tuple[float, float, dict]:
+    """
+    Compare current odds to opening odds and return a win probability signal.
+
+    Sharp money tends to move lines significantly. We treat movement as a
+    directional signal — if the line moves toward a team, that's a positive
+    signal for that team.
+
+    Returns:
+        (home_move_prob, away_move_prob, movement_info)
+        Probabilities sum to 1.0. movement_info is metadata for reporting.
+    """
+    # Default: no signal — neutral 50/50 (won't affect blend if W_MOVEMENT stays)
+    neutral = (0.50, 0.50, {"home_move": 0, "away_move": 0, "signal": "none", "sharp": False})
+
+    # Match by team names since game IDs can differ between API calls
+    snap = next(
+        (v for v in opening.values()
+         if v["home_team"] == home and v["away_team"] == away),
+        None,
+    )
+    if not snap:
+        return neutral
+
+    open_home = snap["home_odds"]
+    open_away = snap["away_odds"]
+
+    # Movement: positive = line got shorter (more favored), negative = longer
+    # For favorites (negative odds): -130 → -150 is a move of -20 (got more expensive)
+    # For underdogs (positive odds):  +120 → +110 is a move of -10 (got cheaper)
+    home_move = home_odds - open_home   # e.g. -150 - (-130) = -20 (home got more favored)
+    away_move = away_odds - open_away
+
+    # Convert to directional signal: which team did the money go to?
+    # Favorite shortening (more negative) = money on that team
+    # Underdog shortening (less positive) = money on that team
+    def money_direction(current: int, opening: int) -> float:
+        """Returns positive score if this team got more action, negative if less."""
+        move = current - opening
+        if opening < 0:   # was a favorite
+            return -move  # -150 → -160 means move=-10, direction=+10 (more action)
+        else:             # was an underdog
+            return -move  # +130 → +120 means move=-10, direction=+10 (more action)
+
+    home_direction = money_direction(home_odds, open_home)
+    away_direction = money_direction(away_odds, open_away)
+
+    abs_move = max(abs(home_direction), abs(away_direction))
+    is_sharp = abs_move >= SHARP_MOVE_THRESHOLD
+
+    if not is_sharp:
+        # Movement too small to be meaningful — return neutral
+        info = {"home_move": home_move, "away_move": away_move,
+                "signal": "neutral", "sharp": False,
+                "open_home": open_home, "open_away": open_away}
+        return 0.50, 0.50, info
+
+    # Determine which direction is stronger
+    if home_direction > away_direction:
+        # Money flowing to home team
+        strength = min(abs_move / 30, 1.0)   # cap at 30-pt move = max confidence
+        if abs_move >= STRONG_MOVE_THRESHOLD:
+            home_prob, away_prob = 0.62, 0.38
+        else:
+            home_prob, away_prob = 0.56, 0.44
+        signal = f"sharp → {home} (move: {abs_move:.0f}pts)"
+    else:
+        # Money flowing to away team
+        strength = min(abs_move / 30, 1.0)
+        if abs_move >= STRONG_MOVE_THRESHOLD:
+            home_prob, away_prob = 0.38, 0.62
+        else:
+            home_prob, away_prob = 0.44, 0.56
+        signal = f"sharp → {away} (move: {abs_move:.0f}pts)"
+
+    info = {
+        "home_move":  home_move,
+        "away_move":  away_move,
+        "open_home":  open_home,
+        "open_away":  open_away,
+        "signal":     signal,
+        "sharp":      True,
+        "move_pts":   round(abs_move, 1),
+    }
+    return home_prob, away_prob, info
+
+
+def should_kill_bet(pick_is_home: bool, movement_info: dict) -> bool:
+    """
+    If sharp money moved significantly AGAINST our pick, kill the bet.
+    This is the most powerful use of line movement — as a veto signal.
+    """
+    if not movement_info.get("sharp"):
+        return False
+    signal = movement_info.get("signal", "")
+    move_pts = movement_info.get("move_pts", 0)
+    if move_pts < KILL_BET_MOVE:
+        return False
+    # Sharp money went the other way
+    if pick_is_home and "sharp →" in signal and "sharp →" in signal:
+        # Check if signal points away
+        away_name_in_signal = not any(
+            word in signal for word in ["home", "Home"]
+        )
+    # Simpler: if our pick direction doesn't match the sharp direction
+    if pick_is_home and "sharp" in signal:
+        # Away team got the sharp money
+        return "→" in signal and movement_info.get("home_move", 0) > 0
+    return False
+
+
 def team_power_prob(home: str, away: str, ratings: dict) -> tuple[float, float]:
     home_r = ratings.get(home, 50.0)
     away_r = ratings.get(away, 50.0)
@@ -228,26 +370,42 @@ def team_power_prob(home: str, away: str, ratings: dict) -> tuple[float, float]:
 # ── Core model ────────────────────────────────────────────────────────────────
 
 def blend_probabilities(
-    home_fair:    float,
-    away_fair:    float,
-    home_power:   float,
-    away_power:   float,
-    home_pitcher: float,
-    away_pitcher: float,
+    home_fair:     float,
+    away_fair:     float,
+    home_power:    float,
+    away_power:    float,
+    home_pitcher:  float,
+    away_pitcher:  float,
+    home_movement: float = 0.50,
+    away_movement: float = 0.50,
 ) -> tuple[float, float]:
     """
-    Weighted blend of three independent signals:
-      50% market fair probability  (vig-stripped DK odds)
-      25% team power rating        (season run differential)
-      25% starting pitcher matchup (ERA / WHIP / K9)
+    Weighted blend of four independent signals:
+      45% market fair probability  (vig-stripped DK odds)
+      20% team power rating        (season run differential)
+      20% starting pitcher matchup (ERA / WHIP / K9)
+      15% line movement            (sharp money direction)
+    If no movement data, movement weight redistributes proportionally.
     """
-    home_blend = (W_MARKET * home_fair) + (W_POWER * home_power) + (W_PITCHER * home_pitcher)
+    if home_movement == 0.50 and away_movement == 0.50:
+        # No movement signal — redistribute that weight to the other three
+        w_m = W_MARKET  + W_MOVEMENT * (W_MARKET  / (W_MARKET + W_POWER + W_PITCHER))
+        w_p = W_POWER   + W_MOVEMENT * (W_POWER   / (W_MARKET + W_POWER + W_PITCHER))
+        w_sp= W_PITCHER + W_MOVEMENT * (W_PITCHER / (W_MARKET + W_POWER + W_PITCHER))
+        home_blend = w_m * home_fair + w_p * home_power + w_sp * home_pitcher
+    else:
+        home_blend = (
+            W_MARKET   * home_fair     +
+            W_POWER    * home_power    +
+            W_PITCHER  * home_pitcher  +
+            W_MOVEMENT * home_movement
+        )
     return home_blend, 1 - home_blend
 
 
 # ── Game analysis ─────────────────────────────────────────────────────────────
 
-def analyze_game(game: dict, ratings: dict, probable_pitchers: dict) -> dict | None:
+def analyze_game(game: dict, ratings: dict, probable_pitchers: dict, opening_lines: dict) -> dict | None:
     home = game["home_team"]
     away = game["away_team"]
 
@@ -278,11 +436,20 @@ def analyze_game(game: dict, ratings: dict, probable_pitchers: dict) -> dict | N
     away_pitcher_stats = fetch_pitcher_stats(away_pitcher_info.get("id"))
     home_pitcher_prob, away_pitcher_prob = pitcher_advantage(home_pitcher_stats, away_pitcher_stats)
 
+    # ── Line movement ──
+    home_move_prob, away_move_prob, move_info = line_movement_signal(
+        game.get("id", ""),
+        home, away,
+        home_odds, away_odds,
+        opening_lines,
+    )
+
     # ── Blend ──
     home_blend, away_blend = blend_probabilities(
         home_fair, away_fair,
         home_power, away_power,
         home_pitcher_prob, away_pitcher_prob,
+        home_move_prob, away_move_prob,
     )
 
     home_edge  = (home_blend - home_fair) * 100
@@ -298,24 +465,33 @@ def analyze_game(game: dict, ratings: dict, probable_pitchers: dict) -> dict | N
     over_imp   = american_to_prob(over_out["price"])  if over_out  else None
     under_imp  = american_to_prob(under_out["price"]) if under_out else None
 
-    # ── Picks ──
+    # ── Picks — with line movement veto ──
     picks = []
     if home_edge >= MIN_EDGE:
-        picks.append({
-            "bet":   f"{home} ML",
-            "odds":  home_odds,
-            "edge":  round(home_edge, 2),
-            "kelly": round(home_kelly * 100, 1),
-            "wager": round(BANKROLL * home_kelly, 2),
-        })
+        # Kill bet if sharp money moved hard against this pick
+        killed = move_info.get("sharp") and move_info.get("move_pts", 0) >= KILL_BET_MOVE and home_move_prob < 0.50
+        if not killed:
+            picks.append({
+                "bet":   f"{home} ML",
+                "odds":  home_odds,
+                "edge":  round(home_edge, 2),
+                "kelly": round(home_kelly * 100, 1),
+                "wager": round(BANKROLL * home_kelly, 2),
+            })
+        else:
+            log.info(f"  ⚠️  {home} ML vetoed — sharp money moved against this pick.")
     if away_edge >= MIN_EDGE:
-        picks.append({
-            "bet":   f"{away} ML",
-            "odds":  away_odds,
-            "edge":  round(away_edge, 2),
-            "kelly": round(away_kelly * 100, 1),
-            "wager": round(BANKROLL * away_kelly, 2),
-        })
+        killed = move_info.get("sharp") and move_info.get("move_pts", 0) >= KILL_BET_MOVE and away_move_prob < 0.50
+        if not killed:
+            picks.append({
+                "bet":   f"{away} ML",
+                "odds":  away_odds,
+                "edge":  round(away_edge, 2),
+                "kelly": round(away_kelly * 100, 1),
+                "wager": round(BANKROLL * away_kelly, 2),
+            })
+        else:
+            log.info(f"  ⚠️  {away} ML vetoed — sharp money moved against this pick.")
 
     return {
         "game":              f"{away} @ {home}",
@@ -343,6 +519,7 @@ def analyze_game(game: dict, ratings: dict, probable_pitchers: dict) -> dict | N
         "total_line":        total_line,
         "over_imp":          round(over_imp  * 100, 1) if over_imp  else None,
         "under_imp":         round(under_imp * 100, 1) if under_imp else None,
+        "line_movement":     move_info,
         "value_picks":       picks,
     }
 
@@ -371,6 +548,11 @@ def print_report(results: list[dict]) -> None:
             print(f"  Power rating:  Away {r['away_power_p']}%  | Home {r['home_power_p']}%")
             print(f"  Pitcher edge:  Away {r['away_pitcher_p']}% | Home {r['home_pitcher_p']}%")
             print(f"  Final blend:   Away {r['away_blend_p']}%   | Home {r['home_blend_p']}%")
+            mv = r.get("line_movement", {})
+            if mv.get("sharp"):
+                print(f"  Line move: {mv['signal']}  "
+                      f"(open: {mv.get('open_away','')} / {mv.get('open_home','')}"
+                      f"  →  now: {r['away_odds']:+d} / {r['home_odds']:+d})")
             if r["total_line"]:
                 print(f"  Total: {r['total_line']}  (Over {r['over_imp']}% / Under {r['under_imp']}%)")
             for pick in r["value_picks"]:
@@ -502,9 +684,12 @@ def main():
     log.info("Loading power ratings…")
     ratings = build_power_ratings()
 
+    log.info("Loading opening lines for movement tracking…")
+    opening_lines = load_opening_lines()
+
     results = []
     for g in games:
-        r = analyze_game(g, ratings, probable_pitchers)
+        r = analyze_game(g, ratings, probable_pitchers, opening_lines)
         if r:
             results.append(r)
 
