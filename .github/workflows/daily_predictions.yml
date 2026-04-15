@@ -2,8 +2,21 @@ name: MLB Daily Bet Predictions
 
 on:
   schedule:
+    # Step 1 — 7:00 AM ET (11:00 UTC): snapshot opening DraftKings lines
+    - cron: "0 11 * * *"
+    # Step 2 — 10:00 AM ET (14:00 UTC): run full prediction engine
     - cron: "0 14 * * *"
   workflow_dispatch:
+    inputs:
+      job:
+        description: "Which job to run"
+        required: false
+        default: "predict"
+        type: choice
+        options:
+          - snapshot
+          - predict
+          - both
 
 permissions:
   contents: write
@@ -11,8 +24,42 @@ permissions:
   id-token: write
 
 jobs:
+  # ── Job 1: Snapshot opening lines at 7 AM ET ──────────────────────────────
+  snapshot:
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'schedule' && github.event.schedule == '0 11 * * *' ||
+      github.event_name == 'workflow_dispatch' && (github.event.inputs.job == 'snapshot' || github.event.inputs.job == 'both')
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Snapshot opening lines
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python snapshot_lines.py
+
+      - name: Commit opening lines
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "📸 Opening lines snapshot [skip ci]"
+          file_pattern: "data/opening_lines_*.json"
+
+  # ── Job 2: Full prediction run at 10 AM ET ────────────────────────────────
   predict:
     runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'schedule' && github.event.schedule == '0 14 * * *' ||
+      github.event_name == 'workflow_dispatch' && (github.event.inputs.job == 'predict' || github.event.inputs.job == 'both')
 
     steps:
       - name: Checkout repo
