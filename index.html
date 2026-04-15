@@ -174,7 +174,7 @@ function valueCard(g) {
       <div class="pick-meta">
         <span class="pick-odds">${fmtOdds(p.odds)}</span>
         <span class="pick-edge">${p.edge}% edge</span>
-        <span class="pick-kelly">Kelly: $${p.wager}</span>
+        <span class="pick-kelly">Kelly: $${(p.wager)/10}</span>
       </div>
     </div>`).join("");
 
