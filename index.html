@@ -103,6 +103,17 @@
         /* No-value message */
     .no-value { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem; text-align: center; color: var(--muted); font-size: 14px; }
 
+    /* Line movement */
+    .movement { display: flex; align-items: center; gap: 6px; font-size: 12px; margin-bottom: .7rem; padding: .4rem .75rem; border-radius: 8px; }
+    .movement.sharp  { background: #FFF8E6; color: #854F0B; }
+    .movement.strong { background: #FFF0D6; color: #633806; font-weight: 500; }
+    .movement.none   { display: none; }
+    .move-arrow { font-size: 14px; }
+    @media (prefers-color-scheme: dark) {
+      .movement.sharp  { background: #2a1f00; color: #FAC775; }
+      .movement.strong { background: #321800; color: #EF9F27; }
+    }
+
     /* Loader / error */
     .loader { text-align: center; color: var(--muted); padding: 3rem 0; font-size: 14px; }
 
@@ -126,7 +137,7 @@
 </div>
 
 <script>
-const BANKROLL = 100;
+const BANKROLL = 1000;
 
 function fmtOdds(n) {
   return n > 0 ? "+" + n : String(n);
@@ -155,6 +166,17 @@ function probBar(awayPct, homePct, awayLabel, homeLabel) {
       <div class="prob-home" style="width:${homePct}%"></div>
     </div>
     <div class="prob-labels"><span>${awayLabel}</span><span>${homeLabel}</span></div>`;
+}
+
+function movementBadge(mv) {
+  if (!mv || !mv.sharp) return "";
+  const cls   = mv.move_pts >= 15 ? "strong" : "sharp";
+  const arrow = mv.move_pts >= 15 ? "⚡" : "→";
+  return `<div class="movement ${cls}">
+    <span class="move-arrow">${arrow}</span>
+    <span>${mv.signal}</span>
+    <span style="margin-left:auto;opacity:.7">open: ${mv.open_away > 0 ? "+" : ""}${mv.open_away} / ${mv.open_home > 0 ? "+" : ""}${mv.open_home}</span>
+  </div>`;
 }
 
 function pitcherRow(name, era, whip, k9) {
@@ -192,6 +214,7 @@ function valueCard(g) {
       ${pitcherRow(g.away_starter, g.away_starter_era, g.away_starter_whip, g.away_starter_k9)}
       ${pitcherRow(g.home_starter, g.home_starter_era, g.home_starter_whip, g.home_starter_k9)}
     </div>
+    ${movementBadge(g.line_movement)}
     ${probBar(awayPct, homePct, `${away} ${awayPct}%`, `${home} ${homePct}%`)}
     <div class="metrics">
       <div class="metric"><div class="metric-label">Market fair</div><div class="metric-val">${g.away_fair_p}% / ${g.home_fair_p}%</div></div>
