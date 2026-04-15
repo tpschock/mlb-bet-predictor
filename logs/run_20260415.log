@@ -2,3 +2,6 @@
 2026-04-15 02:11:54,367 [WARNING] No ODDS_API_KEY set — using sample data. Set env var for live odds.
 2026-04-15 02:11:54,368 [WARNING] power_ratings.json not found — using neutral 50 for all teams.
 2026-04-15 02:11:54,369 [INFO] Predictions saved → predictions/predictions_20260415.json
+2026-04-15 13:43:58,665 [INFO] Fetching odds…
+2026-04-15 13:43:58,882 [INFO] Odds API: 15 games fetched. Requests remaining: 498
+2026-04-15 13:43:58,884 [INFO] Predictions saved → predictions/predictions_20260415.json
