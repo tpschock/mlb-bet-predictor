@@ -40,7 +40,7 @@ BOOKMAKER    = "draftkings"
 
 MIN_EDGE     = 5.0   # raised from 3% — only bet strong edges
 KELLY_FRAC   = 0.25  # fractional Kelly (conservative)
-BANKROLL     = 1000
+BANKROLL     = 100
 
 MLB_API      = "https://statsapi.mlb.com/api/v1"
 
