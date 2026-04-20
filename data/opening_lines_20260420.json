@@ -1,0 +1,72 @@
+{
+  "0e45c1c07e2b9a60ebf70c74f0180cb6": {
+    "home_team": "Boston Red Sox",
+    "away_team": "Detroit Tigers",
+    "home_odds": -279,
+    "away_odds": 205,
+    "snapshot_time": "2026-04-20T15:55:08.973130+00:00"
+  },
+  "8b84f5c8a8eec852cbc8ab761818b5dc": {
+    "home_team": "Cleveland Guardians",
+    "away_team": "Houston Astros",
+    "home_odds": -120,
+    "away_odds": 100,
+    "snapshot_time": "2026-04-20T15:55:08.973130+00:00"
+  },
+  "eaa622d11f4b04e532bbea382e56ca52": {
+    "home_team": "Tampa Bay Rays",
+    "away_team": "Cincinnati Reds",
+    "home_odds": -122,
+    "away_odds": 102,
+    "snapshot_time": "2026-04-20T15:55:08.973130+00:00"
+  },
+  "e50158ffe72f093d4037185c9d31a5eb": {
+    "home_team": "Miami Marlins",
+    "away_team": "St. Louis Cardinals",
+    "home_odds": -136,
+    "away_odds": 113,
+    "snapshot_time": "2026-04-20T15:55:08.973130+00:00"
+  },
+  "6e7862ded6af1d5c6d82f19895ccd191": {
+    "home_team": "Washington Nationals",
+    "away_team": "Atlanta Braves",
+    "home_odds": 129,
+    "away_odds": -156,
+    "snapshot_time": "2026-04-20T15:55:08.973130+00:00"
+  },
+  "6a0b76ac89fd72cc8272b53212004e44": {
+    "home_team": "Kansas City Royals",
+    "away_team": "Baltimore Orioles",
+    "home_odds": -105,
+    "away_odds": -115,
+    "snapshot_time": "2026-04-20T15:55:08.973130+00:00"
+  },
+  "0d70750c31542bcfe935969cb9ccc66e": {
+    "home_team": "Chicago Cubs",
+    "away_team": "Philadelphia Phillies",
+    "home_odds": -115,
+    "away_odds": -105,
+    "snapshot_time": "2026-04-20T15:55:08.973130+00:00"
+  },
+  "4e58a660bb4f20467d3e4261ec9f47ba": {
+    "home_team": "Colorado Rockies",
+    "away_team": "Los Angeles Dodgers",
+    "home_odds": 179,
+    "away_odds": -219,
+    "snapshot_time": "2026-04-20T15:55:08.973130+00:00"
+  },
+  "043dafafb56c1b3ebf5472c9f3fe428f": {
+    "home_team": "Los Angeles Angels",
+    "away_team": "Toronto Blue Jays",
+    "home_odds": 100,
+    "away_odds": -120,
+    "snapshot_time": "2026-04-20T15:55:08.973130+00:00"
+  },
+  "253e6890f41456a41767494219509d9b": {
+    "home_team": "Seattle Mariners",
+    "away_team": "Athletics",
+    "home_odds": -149,
+    "away_odds": 123,
+    "snapshot_time": "2026-04-20T15:55:08.973130+00:00"
+  }
+}
