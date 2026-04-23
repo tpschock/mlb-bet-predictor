@@ -1,0 +1,65 @@
+{
+  "ce701a760fa0f743a20a0f8c455c6f67": {
+    "home_team": "Washington Nationals",
+    "away_team": "Atlanta Braves",
+    "home_odds": 119,
+    "away_odds": -143,
+    "snapshot_time": "2026-04-23T16:54:24.473537+00:00"
+  },
+  "eb87da969b550c21334d689f9113d312": {
+    "home_team": "Detroit Tigers",
+    "away_team": "Milwaukee Brewers",
+    "home_odds": -233,
+    "away_odds": 189,
+    "snapshot_time": "2026-04-23T16:54:24.473537+00:00"
+  },
+  "0690cb513a9395d92f4b14ef1ff47d78": {
+    "home_team": "Chicago Cubs",
+    "away_team": "Philadelphia Phillies",
+    "home_odds": -105,
+    "away_odds": -115,
+    "snapshot_time": "2026-04-23T16:54:24.473537+00:00"
+  },
+  "de14a27d2ad6df38427c5adcc15cb1c1": {
+    "home_team": "Colorado Rockies",
+    "away_team": "San Diego Padres",
+    "home_odds": 129,
+    "away_odds": -156,
+    "snapshot_time": "2026-04-23T16:54:24.473537+00:00"
+  },
+  "a1b5b1f882e1c817603a505107a56d2f": {
+    "home_team": "Arizona Diamondbacks",
+    "away_team": "Chicago White Sox",
+    "home_odds": -163,
+    "away_odds": 135,
+    "snapshot_time": "2026-04-23T16:54:24.473537+00:00"
+  },
+  "7350a8d7c4145d7f644e02a87a4bb365": {
+    "home_team": "San Francisco Giants",
+    "away_team": "Los Angeles Dodgers",
+    "home_odds": 135,
+    "away_odds": -163,
+    "snapshot_time": "2026-04-23T16:54:24.473537+00:00"
+  },
+  "ce566623c1d73c8d56830bafe9334cbb": {
+    "home_team": "Boston Red Sox",
+    "away_team": "New York Yankees",
+    "home_odds": 123,
+    "away_odds": -149,
+    "snapshot_time": "2026-04-23T16:54:24.473537+00:00"
+  },
+  "1e66733b3f851159b9299af54335356a": {
+    "home_team": "New York Mets",
+    "away_team": "Minnesota Twins",
+    "home_odds": -108,
+    "away_odds": -112,
+    "snapshot_time": "2026-04-23T16:54:24.473537+00:00"
+  },
+  "528817a2bf72047f1124e81a7ae55de9": {
+    "home_team": "Texas Rangers",
+    "away_team": "Pittsburgh Pirates",
+    "home_odds": -163,
+    "away_odds": 135,
+    "snapshot_time": "2026-04-23T16:54:24.473537+00:00"
+  }
+}
