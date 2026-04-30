@@ -1,0 +1,15 @@
+2026-04-30 18:00:02,264 [INFO] Fetching odds…
+2026-04-30 18:00:02,457 [INFO] Odds API: 11 games. Requests remaining: 444
+2026-04-30 18:00:02,458 [INFO] Fetching probable pitchers…
+2026-04-30 18:00:02,659 [INFO] Probable pitchers fetched for 18 team slots.
+2026-04-30 18:00:02,660 [INFO] Loading power ratings…
+2026-04-30 18:00:02,661 [INFO] Loading opening lines for movement tracking…
+2026-04-30 18:00:02,661 [INFO] Opening lines loaded: 11 games from opening_lines_20260430.json
+2026-04-30 18:00:02,854 [INFO]   ⚠️  Detroit Tigers ML vetoed — sharp money moved against this pick.
+2026-04-30 18:00:03,085 [INFO]   ⚠️  Houston Astros ML vetoed — sharp money moved against this pick.
+2026-04-30 18:00:03,085 [INFO]   ⚠️  Philadelphia Phillies ML vetoed — sharp money moved against this pick.
+2026-04-30 18:00:03,305 [INFO]   ⚠️  Pittsburgh Pirates ML vetoed — sharp money moved against this pick.
+2026-04-30 18:00:03,496 [INFO]   ⚠️  Colorado Rockies ML vetoed — sharp money moved against this pick.
+2026-04-30 18:00:03,686 [INFO]   ⚠️  New York Mets ML vetoed — sharp money moved against this pick.
+2026-04-30 18:00:03,923 [INFO]   ⚠️  Arizona Diamondbacks ML vetoed — sharp money moved against this pick.
+2026-04-30 18:00:04,524 [INFO] Predictions saved → predictions/predictions_20260430.json
