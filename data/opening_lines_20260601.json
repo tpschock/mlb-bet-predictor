@@ -1,0 +1,65 @@
+{
+  "2787e023f11e64827987a41be824a63b": {
+    "home_team": "Tampa Bay Rays",
+    "away_team": "Detroit Tigers",
+    "home_odds": -163,
+    "away_odds": 135,
+    "snapshot_time": "2026-06-01T16:35:05.154927+00:00"
+  },
+  "ff01c7f99eb2c7a83211f3386020fbe8": {
+    "home_team": "Washington Nationals",
+    "away_team": "Miami Marlins",
+    "home_odds": -144,
+    "away_odds": 119,
+    "snapshot_time": "2026-06-01T16:35:05.154927+00:00"
+  },
+  "c49d57a0f27c1800a2c7bbdabba612fe": {
+    "home_team": "Cincinnati Reds",
+    "away_team": "Kansas City Royals",
+    "home_odds": -194,
+    "away_odds": 159,
+    "snapshot_time": "2026-06-01T16:35:05.154927+00:00"
+  },
+  "b5208270f224abe601bbcd84e50b538a": {
+    "home_team": "Minnesota Twins",
+    "away_team": "Chicago White Sox",
+    "home_odds": -163,
+    "away_odds": 135,
+    "snapshot_time": "2026-06-01T16:35:05.154927+00:00"
+  },
+  "05d72d7bf55653292200aa8a6848aec3": {
+    "home_team": "Milwaukee Brewers",
+    "away_team": "San Francisco Giants",
+    "home_odds": -156,
+    "away_odds": 129,
+    "snapshot_time": "2026-06-01T16:35:05.154927+00:00"
+  },
+  "6e4eb3c6a07da4b8a22a67806cd6a7f0": {
+    "home_team": "St. Louis Cardinals",
+    "away_team": "Texas Rangers",
+    "home_odds": 104,
+    "away_odds": -125,
+    "snapshot_time": "2026-06-01T16:35:05.154927+00:00"
+  },
+  "c81dc56167111218eb7d369db230ad62": {
+    "home_team": "Los Angeles Angels",
+    "away_team": "Colorado Rockies",
+    "home_odds": -205,
+    "away_odds": 168,
+    "snapshot_time": "2026-06-01T16:35:05.154927+00:00"
+  },
+  "f2e11191da4c1bb89d2c6b19a7536d9d": {
+    "home_team": "Arizona Diamondbacks",
+    "away_team": "Los Angeles Dodgers",
+    "home_odds": 139,
+    "away_odds": -168,
+    "snapshot_time": "2026-06-01T16:35:05.154927+00:00"
+  },
+  "daef1f1e03324e709f683a56a6ad0487": {
+    "home_team": "Seattle Mariners",
+    "away_team": "New York Mets",
+    "home_odds": -132,
+    "away_odds": 110,
+    "snapshot_time": "2026-06-01T16:35:05.154927+00:00"
+  }
+}
