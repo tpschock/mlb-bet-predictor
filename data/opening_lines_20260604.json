@@ -1,0 +1,65 @@
+{
+  "8f76a0f8197d7420bf1e1eb9f5d94159": {
+    "home_team": "Philadelphia Phillies",
+    "away_team": "San Diego Padres",
+    "home_odds": -207,
+    "away_odds": 169,
+    "snapshot_time": "2026-06-04T13:56:18.855268+00:00"
+  },
+  "8ba83a5fb0f9d2b93807e073204a5850": {
+    "home_team": "Boston Red Sox",
+    "away_team": "Baltimore Orioles",
+    "home_odds": -118,
+    "away_odds": -102,
+    "snapshot_time": "2026-06-04T13:56:18.855268+00:00"
+  },
+  "a0dbb7bbd28b837d0732bfad7f975e9f": {
+    "home_team": "New York Yankees",
+    "away_team": "Cleveland Guardians",
+    "home_odds": -175,
+    "away_odds": 144,
+    "snapshot_time": "2026-06-04T13:56:18.855268+00:00"
+  },
+  "21eff9bb5b8451ea2abb9e638ed600e3": {
+    "home_team": "Milwaukee Brewers",
+    "away_team": "San Francisco Giants",
+    "home_odds": -194,
+    "away_odds": 159,
+    "snapshot_time": "2026-06-04T13:56:18.855268+00:00"
+  },
+  "5dfa37c10be5e8b012bf4fe64b302fa3": {
+    "home_team": "Atlanta Braves",
+    "away_team": "Toronto Blue Jays",
+    "home_odds": -207,
+    "away_odds": 169,
+    "snapshot_time": "2026-06-04T13:56:18.855268+00:00"
+  },
+  "77284803e3bb753f121e4c2b4a20ea8e": {
+    "home_team": "Minnesota Twins",
+    "away_team": "Kansas City Royals",
+    "home_odds": -105,
+    "away_odds": -114,
+    "snapshot_time": "2026-06-04T13:56:18.855268+00:00"
+  },
+  "51cce7bcf24220f34920f5fc8ae977d5": {
+    "home_team": "Chicago Cubs",
+    "away_team": "Athletics",
+    "home_odds": -136,
+    "away_odds": 113,
+    "snapshot_time": "2026-06-04T13:56:18.855268+00:00"
+  },
+  "bd13c90444ac849f846564fe0fa941e7": {
+    "home_team": "Houston Astros",
+    "away_team": "Pittsburgh Pirates",
+    "home_odds": -112,
+    "away_odds": -107,
+    "snapshot_time": "2026-06-04T13:56:18.855268+00:00"
+  },
+  "2acc5473be6d726025c973a3d148e6b0": {
+    "home_team": "Arizona Diamondbacks",
+    "away_team": "Los Angeles Dodgers",
+    "home_odds": 114,
+    "away_odds": -137,
+    "snapshot_time": "2026-06-04T13:56:18.855268+00:00"
+  }
+}
