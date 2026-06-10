@@ -1,0 +1,107 @@
+{
+  "891e69457152c080ffcc21c7d270d496": {
+    "home_team": "Tampa Bay Rays",
+    "away_team": "Boston Red Sox",
+    "home_odds": -150,
+    "away_odds": 124,
+    "snapshot_time": "2026-06-10T14:19:57.406545+00:00"
+  },
+  "4c66d2e13ce50dd60d19e8cff8bbd7c8": {
+    "home_team": "Cleveland Guardians",
+    "away_team": "New York Yankees",
+    "home_odds": -123,
+    "away_odds": 102,
+    "snapshot_time": "2026-06-10T14:19:57.406545+00:00"
+  },
+  "c36bdb8231822ee0f1da32b6be40b9b0": {
+    "home_team": "San Francisco Giants",
+    "away_team": "Washington Nationals",
+    "home_odds": -110,
+    "away_odds": -109,
+    "snapshot_time": "2026-06-10T14:19:57.406545+00:00"
+  },
+  "05b5c7cee311b071b85433bf42dc4612": {
+    "home_team": "San Diego Padres",
+    "away_team": "Cincinnati Reds",
+    "home_odds": -171,
+    "away_odds": 141,
+    "snapshot_time": "2026-06-10T14:19:57.406545+00:00"
+  },
+  "c679aca8a08df633e4d70c359217ffe5": {
+    "home_team": "Baltimore Orioles",
+    "away_team": "Seattle Mariners",
+    "home_odds": -107,
+    "away_odds": -113,
+    "snapshot_time": "2026-06-10T14:19:57.406545+00:00"
+  },
+  "5b5ca06821ecfe2cbf46026575ed9263": {
+    "home_team": "Miami Marlins",
+    "away_team": "Arizona Diamondbacks",
+    "home_odds": -107,
+    "away_odds": -112,
+    "snapshot_time": "2026-06-10T14:19:57.406545+00:00"
+  },
+  "928d36763fd31061810699e36df3bba8": {
+    "home_team": "Detroit Tigers",
+    "away_team": "Minnesota Twins",
+    "home_odds": -180,
+    "away_odds": 148,
+    "snapshot_time": "2026-06-10T14:19:57.406545+00:00"
+  },
+  "375d31006805a62964445dd208379b2b": {
+    "home_team": "Pittsburgh Pirates",
+    "away_team": "Los Angeles Dodgers",
+    "home_odds": 169,
+    "away_odds": -207,
+    "snapshot_time": "2026-06-10T14:19:57.406545+00:00"
+  },
+  "060e554031da942cb986e3f4a4934693": {
+    "home_team": "Toronto Blue Jays",
+    "away_team": "Philadelphia Phillies",
+    "home_odds": 113,
+    "away_odds": -136,
+    "snapshot_time": "2026-06-10T14:19:57.406545+00:00"
+  },
+  "e1a00a3014c67a9c52882049b063f78a": {
+    "home_team": "New York Mets",
+    "away_team": "St. Louis Cardinals",
+    "home_odds": -136,
+    "away_odds": 113,
+    "snapshot_time": "2026-06-10T14:19:57.406545+00:00"
+  },
+  "07281b73eef3ffc23544bbe5a9393d44": {
+    "home_team": "Chicago White Sox",
+    "away_team": "Atlanta Braves",
+    "home_odds": 124,
+    "away_odds": -149,
+    "snapshot_time": "2026-06-10T14:19:57.406545+00:00"
+  },
+  "c00c26980a4f67d0037ac7fd8a3dd15b": {
+    "home_team": "Kansas City Royals",
+    "away_team": "Texas Rangers",
+    "home_odds": 102,
+    "away_odds": -123,
+    "snapshot_time": "2026-06-10T14:19:57.406545+00:00"
+  },
+  "cd7e74e983be115f2ccb417ccb4f845d": {
+    "home_team": "Colorado Rockies",
+    "away_team": "Chicago Cubs",
+    "home_odds": 144,
+    "away_odds": -175,
+    "snapshot_time": "2026-06-10T14:19:57.406545+00:00"
+  },
+  "715a197e2d41a434a760c22ec0a823c5": {
+    "home_team": "Athletics",
+    "away_team": "Milwaukee Brewers",
+    "home_odds": -110,
+    "away_odds": -110,
+    "snapshot_time": "2026-06-10T14:19:57.406545+00:00"
+  },
+  "325a216ed291897f85ab8c9b49ebd33d": {
+    "home_team": "Los Angeles Angels",
+    "away_team": "Houston Astros",
+    "home_odds": -120,
+    "away_odds": -101,
+    "snapshot_time": "2026-06-10T14:19:57.406545+00:00"
+  }
+}
