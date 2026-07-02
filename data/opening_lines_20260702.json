@@ -1,0 +1,65 @@
+{
+  "0d018935d27849176c88ca1dae8a8da8": {
+    "home_team": "Philadelphia Phillies",
+    "away_team": "Pittsburgh Pirates",
+    "home_odds": -131,
+    "away_odds": 109,
+    "snapshot_time": "2026-07-02T12:54:10.129410+00:00"
+  },
+  "2bbaa286b732c0af8947d273e164f15e": {
+    "home_team": "Milwaukee Brewers",
+    "away_team": "Cincinnati Reds",
+    "home_odds": -204,
+    "away_odds": 167,
+    "snapshot_time": "2026-07-02T12:54:10.129410+00:00"
+  },
+  "bf902b3b8ba731d8cf4b422470319439": {
+    "home_team": "Colorado Rockies",
+    "away_team": "Miami Marlins",
+    "home_odds": 104,
+    "away_odds": -126,
+    "snapshot_time": "2026-07-02T12:54:10.129410+00:00"
+  },
+  "6f7b9d64e494097e8646d88ca4c33577": {
+    "home_team": "Cleveland Guardians",
+    "away_team": "Chicago White Sox",
+    "home_odds": -101,
+    "away_odds": -120,
+    "snapshot_time": "2026-07-02T12:54:10.129410+00:00"
+  },
+  "a0e93fcad5a057f362a048be909d86c8": {
+    "home_team": "Atlanta Braves",
+    "away_team": "St. Louis Cardinals",
+    "home_odds": -115,
+    "away_odds": -105,
+    "snapshot_time": "2026-07-02T12:54:10.129410+00:00"
+  },
+  "e01b5de283d3047c0c1bc73082a2d67a": {
+    "home_team": "Kansas City Royals",
+    "away_team": "Tampa Bay Rays",
+    "home_odds": 102,
+    "away_odds": -123,
+    "snapshot_time": "2026-07-02T12:54:10.129410+00:00"
+  },
+  "63d068d292e5a379ba2a1d669c979313": {
+    "home_team": "Texas Rangers",
+    "away_team": "Detroit Tigers",
+    "home_odds": -126,
+    "away_odds": 105,
+    "snapshot_time": "2026-07-02T12:54:10.129410+00:00"
+  },
+  "283444f773ee82cae9a5977e9266baac": {
+    "home_team": "Seattle Mariners",
+    "away_team": "Los Angeles Angels",
+    "home_odds": -224,
+    "away_odds": 182,
+    "snapshot_time": "2026-07-02T12:54:10.129410+00:00"
+  },
+  "ae95cd98700fec55791774682d6b0b06": {
+    "home_team": "Los Angeles Dodgers",
+    "away_team": "San Diego Padres",
+    "home_odds": -198,
+    "away_odds": 162,
+    "snapshot_time": "2026-07-02T12:54:10.129410+00:00"
+  }
+}
