@@ -1,0 +1,65 @@
+{
+  "32dd5e1c6b71a610636cc0fb2087b9a4": {
+    "home_team": "Detroit Tigers",
+    "away_team": "Cleveland Guardians",
+    "home_odds": 116,
+    "away_odds": -124,
+    "snapshot_time": "2026-08-13T11:41:29.580351+00:00"
+  },
+  "7f3d422253cc0ea2296a6cb920fc2186": {
+    "home_team": "Miami Marlins",
+    "away_team": "Pittsburgh Pirates",
+    "home_odds": 111,
+    "away_odds": -119,
+    "snapshot_time": "2026-08-13T11:41:29.580351+00:00"
+  },
+  "3e1c279359817c97e285db96732ef225": {
+    "home_team": "New York Yankees",
+    "away_team": "Seattle Mariners",
+    "home_odds": -135,
+    "away_odds": 126,
+    "snapshot_time": "2026-08-13T11:41:29.580351+00:00"
+  },
+  "7d03df008d15f138b3726ef4b85c983f": {
+    "home_team": "Chicago White Sox",
+    "away_team": "Cincinnati Reds",
+    "home_odds": -129,
+    "away_odds": 120,
+    "snapshot_time": "2026-08-13T11:41:29.580351+00:00"
+  },
+  "3ed772c2f7f038e1b8d40c6a678ecc88": {
+    "home_team": "Toronto Blue Jays",
+    "away_team": "Boston Red Sox",
+    "home_odds": 144,
+    "away_odds": -155,
+    "snapshot_time": "2026-08-13T11:41:29.580351+00:00"
+  },
+  "41d927261a15c8d84075af83997d53c1": {
+    "home_team": "Washington Nationals",
+    "away_team": "Chicago Cubs",
+    "home_odds": 125,
+    "away_odds": -134,
+    "snapshot_time": "2026-08-13T11:41:29.580351+00:00"
+  },
+  "9fa039b0c801332ed857fb145a2926b9": {
+    "home_team": "Minnesota Twins",
+    "away_team": "Philadelphia Phillies",
+    "home_odds": -108,
+    "away_odds": 101,
+    "snapshot_time": "2026-08-13T11:41:29.580351+00:00"
+  },
+  "f9b96108d4bae8b60bcda1e87549bedc": {
+    "home_team": "Los Angeles Angels",
+    "away_team": "Texas Rangers",
+    "home_odds": 134,
+    "away_odds": -162,
+    "snapshot_time": "2026-08-13T11:41:29.580351+00:00"
+  },
+  "4071566704903e79a0090ba8e886f060": {
+    "home_team": "Los Angeles Dodgers",
+    "away_team": "Milwaukee Brewers",
+    "home_odds": -150,
+    "away_odds": 124,
+    "snapshot_time": "2026-08-13T11:41:29.580351+00:00"
+  }
+}
