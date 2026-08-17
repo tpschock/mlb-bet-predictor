@@ -1,0 +1,65 @@
+{
+  "cb1a188fc992ac519e4a6f5dc4cdd2ae": {
+    "home_team": "Tampa Bay Rays",
+    "away_team": "Baltimore Orioles",
+    "home_odds": -158,
+    "away_odds": 147,
+    "snapshot_time": "2026-08-17T11:20:16.967965+00:00"
+  },
+  "d959d72a9bedf8bf352ced6c59eee454": {
+    "home_team": "Philadelphia Phillies",
+    "away_team": "Miami Marlins",
+    "home_odds": -235,
+    "away_odds": 217,
+    "snapshot_time": "2026-08-17T11:20:16.967965+00:00"
+  },
+  "f7e02d88c3c8adff188802734b303bb7": {
+    "home_team": "Pittsburgh Pirates",
+    "away_team": "Detroit Tigers",
+    "home_odds": 108,
+    "away_odds": -116,
+    "snapshot_time": "2026-08-17T11:20:16.967965+00:00"
+  },
+  "35b8e20be878e657d78dad6bea7642dc": {
+    "home_team": "Boston Red Sox",
+    "away_team": "Arizona Diamondbacks",
+    "home_odds": -141,
+    "away_odds": 131,
+    "snapshot_time": "2026-08-17T11:20:16.967965+00:00"
+  },
+  "e8bcfb6024c2cbac0531a6a70933b0f0": {
+    "home_team": "New York Mets",
+    "away_team": "San Diego Padres",
+    "home_odds": -114,
+    "away_odds": 106,
+    "snapshot_time": "2026-08-17T11:20:16.967965+00:00"
+  },
+  "759827c86479e28994e9d71487062482": {
+    "home_team": "Kansas City Royals",
+    "away_team": "Athletics",
+    "home_odds": -198,
+    "away_odds": 163,
+    "snapshot_time": "2026-08-17T11:20:16.967965+00:00"
+  },
+  "50d18f8917581bd44447b6d3d754aaf4": {
+    "home_team": "Minnesota Twins",
+    "away_team": "Atlanta Braves",
+    "home_odds": 109,
+    "away_odds": -131,
+    "snapshot_time": "2026-08-17T11:20:16.967965+00:00"
+  },
+  "8ccc90357b1b20ca35a6c2da51638dbc": {
+    "home_team": "Chicago Cubs",
+    "away_team": "Chicago White Sox",
+    "home_odds": -172,
+    "away_odds": 142,
+    "snapshot_time": "2026-08-17T11:20:16.967965+00:00"
+  },
+  "84c8b9f4c2aee2ab9c8fc52bc1f0011b": {
+    "home_team": "Colorado Rockies",
+    "away_team": "Los Angeles Dodgers",
+    "home_odds": 215,
+    "away_odds": -267,
+    "snapshot_time": "2026-08-17T11:20:16.967965+00:00"
+  }
+}
