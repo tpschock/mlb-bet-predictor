@@ -1,0 +1,13 @@
+2026-09-07 18:28:04,492 [INFO] Fetching odds…
+2026-09-07 18:28:04,569 [INFO] Odds API: 24 games. Requests remaining: 479
+2026-09-07 18:28:04,570 [INFO] Fetching probable pitchers…
+2026-09-07 18:28:04,678 [INFO] Probable pitchers fetched for 22 team slots.
+2026-09-07 18:28:04,679 [INFO] Loading power ratings…
+2026-09-07 18:28:04,680 [INFO] Loading opening lines for movement tracking…
+2026-09-07 18:28:04,680 [INFO] Opening lines loaded: 11 games from opening_lines_20260907.json
+2026-09-07 18:28:04,853 [INFO]   ⚠️  Miami Marlins ML vetoed — sharp money moved against this pick.
+2026-09-07 18:28:04,928 [INFO]   ⚠️  Cleveland Guardians ML vetoed — sharp money moved against this pick.
+2026-09-07 18:28:04,999 [INFO]   ⚠️  Los Angeles Angels ML vetoed — sharp money moved against this pick.
+2026-09-07 18:28:06,005 [INFO]   ⚠️  Chicago Cubs ML vetoed — sharp money moved against this pick.
+2026-09-07 18:28:06,207 [INFO]   ⚠️  Cincinnati Reds ML vetoed — sharp money moved against this pick.
+2026-09-07 18:28:06,209 [INFO] Predictions saved → predictions/predictions_20260907.json
