@@ -1,0 +1,30 @@
+{
+  "5d13b613a334039f0694d8c95af28728": {
+    "home_team": "Cleveland Guardians",
+    "away_team": "Chicago White Sox",
+    "home_odds": -157,
+    "away_odds": 130,
+    "snapshot_time": "2026-10-02T16:27:31.443203+00:00"
+  },
+  "1632ced04d65127cf6172d3a2c2e2d16": {
+    "home_team": "Los Angeles Dodgers",
+    "away_team": "Atlanta Braves",
+    "home_odds": -217,
+    "away_odds": 177,
+    "snapshot_time": "2026-10-02T16:27:31.443203+00:00"
+  },
+  "cb4d07dc15440acf3d9ebe1ad41756c1": {
+    "home_team": "Tampa Bay Rays",
+    "away_team": "New York Yankees",
+    "home_odds": -136,
+    "away_odds": 113,
+    "snapshot_time": "2026-10-02T16:27:31.443203+00:00"
+  },
+  "347a2e725dd11a54a1d964eae3d04dd2": {
+    "home_team": "Milwaukee Brewers",
+    "away_team": "San Diego Padres",
+    "home_odds": -218,
+    "away_odds": 178,
+    "snapshot_time": "2026-10-02T16:27:31.443203+00:00"
+  }
+}
