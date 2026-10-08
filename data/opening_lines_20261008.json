@@ -1,0 +1,16 @@
+{
+  "b57e790481f2b8e5eaf9e0f3eab816bc": {
+    "home_team": "Chicago White Sox",
+    "away_team": "Cleveland Guardians",
+    "home_odds": -105,
+    "away_odds": -115,
+    "snapshot_time": "2026-10-08T17:41:14.067272+00:00"
+  },
+  "c43e98d4effc9181f21e21225fcbd47a": {
+    "home_team": "Milwaukee Brewers",
+    "away_team": "Los Angeles Dodgers",
+    "home_odds": -113,
+    "away_odds": -106,
+    "snapshot_time": "2026-10-08T17:41:14.067272+00:00"
+  }
+}
