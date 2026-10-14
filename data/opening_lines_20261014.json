@@ -1,0 +1,16 @@
+{
+  "622fd31d2c8178b025455656e0d2fb89": {
+    "home_team": "Los Angeles Dodgers",
+    "away_team": "Milwaukee Brewers",
+    "home_odds": -176,
+    "away_odds": 145,
+    "snapshot_time": "2026-10-14T15:40:12.186647+00:00"
+  },
+  "2572cf9b86ae24b8bec2778e9a6fdfcb": {
+    "home_team": "Cleveland Guardians",
+    "away_team": "Tampa Bay Rays",
+    "home_odds": -133,
+    "away_odds": 110,
+    "snapshot_time": "2026-10-14T15:40:12.186647+00:00"
+  }
+}
