@@ -1,0 +1,41 @@
+{
+  "date": "20261017",
+  "results": [
+    {
+      "game": "Tampa Bay Rays @ Cleveland Guardians",
+      "commence": "2026-10-18T00:00:00Z",
+      "home_starter": "Shawn Armstrong",
+      "away_starter": "Nick Martinez",
+      "home_starter_era": 4.58,
+      "away_starter_era": 3.1,
+      "home_starter_whip": 1.39,
+      "away_starter_whip": 1.09,
+      "home_starter_k9": 8.7,
+      "away_starter_k9": 5.5,
+      "home_odds": -106,
+      "away_odds": -114,
+      "home_fair_p": 49.1,
+      "away_fair_p": 50.9,
+      "home_power_p": 52.0,
+      "away_power_p": 48.0,
+      "home_pitcher_p": 46.2,
+      "away_pitcher_p": 53.8,
+      "home_blend_p": 49.1,
+      "away_blend_p": 50.9,
+      "home_edge": -0.01,
+      "away_edge": 0.01,
+      "total_line": 6.5,
+      "over_imp": 52.8,
+      "under_imp": 51.9,
+      "line_movement": {
+        "home_move": 0,
+        "away_move": 0,
+        "signal": "neutral",
+        "sharp": false,
+        "open_home": -106,
+        "open_away": -114
+      },
+      "value_picks": []
+    }
+  ]
+}
