@@ -1,0 +1,41 @@
+{
+  "date": "20261018",
+  "results": [
+    {
+      "game": "Tampa Bay Rays @ Cleveland Guardians",
+      "commence": "2026-10-18T21:10:00Z",
+      "home_starter": "Parker Messick",
+      "away_starter": "Drew Rasmussen",
+      "home_starter_era": 2.56,
+      "away_starter_era": 2.67,
+      "home_starter_whip": 1.06,
+      "away_starter_whip": 0.91,
+      "home_starter_k9": 9.3,
+      "away_starter_k9": 9.1,
+      "home_odds": 110,
+      "away_odds": -132,
+      "home_fair_p": 45.6,
+      "away_fair_p": 54.4,
+      "home_power_p": 52.0,
+      "away_power_p": 48.0,
+      "home_pitcher_p": 50.2,
+      "away_pitcher_p": 49.8,
+      "home_blend_p": 48.2,
+      "away_blend_p": 51.8,
+      "home_edge": 2.6,
+      "away_edge": -2.6,
+      "total_line": 6.5,
+      "over_imp": 50.5,
+      "under_imp": 54.1,
+      "line_movement": {
+        "home_move": 0,
+        "away_move": 1,
+        "signal": "neutral",
+        "sharp": false,
+        "open_home": 110,
+        "open_away": -133
+      },
+      "value_picks": []
+    }
+  ]
+}
