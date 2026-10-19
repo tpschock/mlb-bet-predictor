@@ -1,0 +1,41 @@
+{
+  "date": "20261019",
+  "results": [
+    {
+      "game": "Cleveland Guardians @ Tampa Bay Rays",
+      "commence": "2026-10-20T00:10:00Z",
+      "home_starter": "Freddy Peralta",
+      "away_starter": "Shawn Armstrong",
+      "home_starter_era": 4.42,
+      "away_starter_era": 4.58,
+      "home_starter_whip": 1.33,
+      "away_starter_whip": 1.39,
+      "home_starter_k9": 8.3,
+      "away_starter_k9": 8.7,
+      "home_odds": -158,
+      "away_odds": 130,
+      "home_fair_p": 58.5,
+      "away_fair_p": 41.5,
+      "home_power_p": 52.0,
+      "away_power_p": 48.0,
+      "home_pitcher_p": 50.5,
+      "away_pitcher_p": 49.5,
+      "home_blend_p": 55.1,
+      "away_blend_p": 44.9,
+      "home_edge": -3.4,
+      "away_edge": 3.4,
+      "total_line": 7.0,
+      "over_imp": 49.5,
+      "under_imp": 55.0,
+      "line_movement": {
+        "home_move": -1,
+        "away_move": 0,
+        "signal": "neutral",
+        "sharp": false,
+        "open_home": -157,
+        "open_away": 130
+      },
+      "value_picks": []
+    }
+  ]
+}
