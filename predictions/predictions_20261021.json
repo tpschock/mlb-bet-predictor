@@ -1,0 +1,41 @@
+{
+  "date": "20261021",
+  "results": [
+    {
+      "game": "Tampa Bay Rays @ Milwaukee Brewers",
+      "commence": "2026-10-24T00:00:00Z",
+      "home_starter": "TBD",
+      "away_starter": "TBD",
+      "home_starter_era": 4.2,
+      "away_starter_era": 4.2,
+      "home_starter_whip": 1.28,
+      "away_starter_whip": 1.28,
+      "home_starter_k9": 8.5,
+      "away_starter_k9": 8.5,
+      "home_odds": -161,
+      "away_odds": 133,
+      "home_fair_p": 59.0,
+      "away_fair_p": 41.0,
+      "home_power_p": 52.0,
+      "away_power_p": 48.0,
+      "home_pitcher_p": 50.0,
+      "away_pitcher_p": 50.0,
+      "home_blend_p": 55.2,
+      "away_blend_p": 44.8,
+      "home_edge": -3.75,
+      "away_edge": 3.75,
+      "total_line": 6.0,
+      "over_imp": 52.4,
+      "under_imp": 52.4,
+      "line_movement": {
+        "home_move": 0,
+        "away_move": 0,
+        "signal": "neutral",
+        "sharp": false,
+        "open_home": -161,
+        "open_away": 133
+      },
+      "value_picks": []
+    }
+  ]
+}
