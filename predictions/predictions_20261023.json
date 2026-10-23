@@ -1,0 +1,41 @@
+{
+  "date": "20261023",
+  "results": [
+    {
+      "game": "Tampa Bay Rays @ Milwaukee Brewers",
+      "commence": "2026-10-24T00:00:00Z",
+      "home_starter": "Jacob Misiorowski",
+      "away_starter": "Nick Martinez",
+      "home_starter_era": 1.8,
+      "away_starter_era": 3.1,
+      "home_starter_whip": 0.8,
+      "away_starter_whip": 1.09,
+      "home_starter_k9": 13.0,
+      "away_starter_k9": 5.5,
+      "home_odds": -192,
+      "away_odds": 158,
+      "home_fair_p": 62.9,
+      "away_fair_p": 37.1,
+      "home_power_p": 52.0,
+      "away_power_p": 48.0,
+      "home_pitcher_p": 58.5,
+      "away_pitcher_p": 41.5,
+      "home_blend_p": 59.3,
+      "away_blend_p": 40.7,
+      "home_edge": -3.62,
+      "away_edge": 3.62,
+      "total_line": 6.5,
+      "over_imp": 52.8,
+      "under_imp": 51.9,
+      "line_movement": {
+        "home_move": -5,
+        "away_move": 4,
+        "signal": "neutral",
+        "sharp": false,
+        "open_home": -187,
+        "open_away": 154
+      },
+      "value_picks": []
+    }
+  ]
+}
