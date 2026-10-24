@@ -1,0 +1,41 @@
+{
+  "date": "20261024",
+  "results": [
+    {
+      "game": "Tampa Bay Rays @ Milwaukee Brewers",
+      "commence": "2026-10-25T00:00:00Z",
+      "home_starter": "Logan Henderson",
+      "away_starter": "Drew Rasmussen",
+      "home_starter_era": 2.47,
+      "away_starter_era": 2.67,
+      "home_starter_whip": 0.84,
+      "away_starter_whip": 0.91,
+      "home_starter_k9": 10.1,
+      "away_starter_k9": 9.1,
+      "home_odds": -120,
+      "away_odds": 100,
+      "home_fair_p": 52.2,
+      "away_fair_p": 47.8,
+      "home_power_p": 52.0,
+      "away_power_p": 48.0,
+      "home_pitcher_p": 51.2,
+      "away_pitcher_p": 48.8,
+      "home_blend_p": 51.9,
+      "away_blend_p": 48.1,
+      "home_edge": -0.26,
+      "away_edge": 0.26,
+      "total_line": 6.5,
+      "over_imp": 52.4,
+      "under_imp": 52.4,
+      "line_movement": {
+        "home_move": 0,
+        "away_move": 0,
+        "signal": "neutral",
+        "sharp": false,
+        "open_home": -120,
+        "open_away": 100
+      },
+      "value_picks": []
+    }
+  ]
+}
