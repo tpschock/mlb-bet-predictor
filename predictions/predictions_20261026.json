@@ -1,0 +1,41 @@
+{
+  "date": "20261026",
+  "results": [
+    {
+      "game": "Milwaukee Brewers @ Tampa Bay Rays",
+      "commence": "2026-10-27T00:10:00Z",
+      "home_starter": "Freddy Peralta",
+      "away_starter": "Robert Gasser",
+      "home_starter_era": 4.42,
+      "away_starter_era": 3.87,
+      "home_starter_whip": 1.33,
+      "away_starter_whip": 1.19,
+      "home_starter_k9": 8.3,
+      "away_starter_k9": 8.5,
+      "home_odds": -116,
+      "away_odds": -104,
+      "home_fair_p": 51.3,
+      "away_fair_p": 48.7,
+      "home_power_p": 52.0,
+      "away_power_p": 48.0,
+      "home_pitcher_p": 47.5,
+      "away_pitcher_p": 52.5,
+      "home_blend_p": 50.6,
+      "away_blend_p": 49.4,
+      "home_edge": -0.73,
+      "away_edge": 0.73,
+      "total_line": 7.0,
+      "over_imp": 53.5,
+      "under_imp": 51.0,
+      "line_movement": {
+        "home_move": 2,
+        "away_move": -2,
+        "signal": "neutral",
+        "sharp": false,
+        "open_home": -118,
+        "open_away": -102
+      },
+      "value_picks": []
+    }
+  ]
+}
