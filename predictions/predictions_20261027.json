@@ -1,0 +1,49 @@
+{
+  "date": "20261027",
+  "results": [
+    {
+      "game": "Milwaukee Brewers @ Tampa Bay Rays",
+      "commence": "2026-10-28T00:00:00Z",
+      "home_starter": "Griffin Jax",
+      "away_starter": "TBD",
+      "home_starter_era": 3.53,
+      "away_starter_era": 4.2,
+      "home_starter_whip": 1.18,
+      "away_starter_whip": 1.28,
+      "home_starter_k9": 9.3,
+      "away_starter_k9": 8.5,
+      "home_odds": 104,
+      "away_odds": -125,
+      "home_fair_p": 46.9,
+      "away_fair_p": 53.1,
+      "home_power_p": 52.0,
+      "away_power_p": 48.0,
+      "home_pitcher_p": 69.6,
+      "away_pitcher_p": 30.4,
+      "home_blend_p": 53.4,
+      "away_blend_p": 46.6,
+      "home_edge": 6.56,
+      "away_edge": -6.56,
+      "total_line": 7.0,
+      "over_imp": 53.3,
+      "under_imp": 51.2,
+      "line_movement": {
+        "home_move": 1,
+        "away_move": -1,
+        "signal": "neutral",
+        "sharp": false,
+        "open_home": 103,
+        "open_away": -124
+      },
+      "value_picks": [
+        {
+          "bet": "Tampa Bay Rays ML",
+          "odds": 104,
+          "edge": 6.56,
+          "kelly": 2.2,
+          "wager": 2.17
+        }
+      ]
+    }
+  ]
+}
