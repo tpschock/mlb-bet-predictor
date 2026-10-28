@@ -1,0 +1,41 @@
+{
+  "date": "20261028",
+  "results": [
+    {
+      "game": "Milwaukee Brewers @ Tampa Bay Rays",
+      "commence": "2026-10-29T00:00:00Z",
+      "home_starter": "Drew Rasmussen",
+      "away_starter": "Jacob Misiorowski",
+      "home_starter_era": 2.67,
+      "away_starter_era": 1.8,
+      "home_starter_whip": 0.91,
+      "away_starter_whip": 0.8,
+      "home_starter_k9": 9.1,
+      "away_starter_k9": 13.0,
+      "home_odds": 130,
+      "away_odds": -157,
+      "home_fair_p": 41.6,
+      "away_fair_p": 58.4,
+      "home_power_p": 52.0,
+      "away_power_p": 48.0,
+      "home_pitcher_p": 45.5,
+      "away_pitcher_p": 54.5,
+      "home_blend_p": 44.9,
+      "away_blend_p": 55.1,
+      "home_edge": 3.37,
+      "away_edge": -3.37,
+      "total_line": 6.5,
+      "over_imp": 54.3,
+      "under_imp": 50.2,
+      "line_movement": {
+        "home_move": -4,
+        "away_move": 5,
+        "signal": "neutral",
+        "sharp": false,
+        "open_home": 134,
+        "open_away": -162
+      },
+      "value_picks": []
+    }
+  ]
+}
